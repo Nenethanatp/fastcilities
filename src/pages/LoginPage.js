@@ -1,7 +1,7 @@
-import AuthContainer from '../features/auth/AuthContainer';
+import LoginContainer from '../features/auth/LoginContainer';
 
 function LoginPage() {
-  return <AuthContainer />;
+  return <LoginContainer />;
 }
 
 export default LoginPage;

@@ -1,6 +1,6 @@
 import LoginForm from './LoginForm';
 
-function AuthForm() {
+function LoginContainer() {
   return (
     <>
       <LoginForm />
@@ -8,4 +8,4 @@ function AuthForm() {
   );
 }
 
-export default AuthForm;
+export default LoginContainer;
