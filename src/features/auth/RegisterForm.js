@@ -16,6 +16,7 @@ function RegisterForm() {
     email: '',
     phone: '',
     faculty: '',
+    image: '',
   });
 
   const handleChangeInput = (e) => {
