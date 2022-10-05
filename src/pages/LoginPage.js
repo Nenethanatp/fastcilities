@@ -1,7 +1,11 @@
 import LoginContainer from '../features/auth/LoginContainer';
 
 function LoginPage() {
-  return <LoginContainer />;
+  return (
+    <div className="bg-gray-200 h-screen">
+      <LoginContainer />;
+    </div>
+  );
 }
 
 export default LoginPage;

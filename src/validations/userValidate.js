@@ -11,6 +11,7 @@ export const validateUser = (input) => {
     email,
     phone,
     faculty,
+    image,
   } = input;
 
   if (isEmpty(firstName) || !isAlpha(firstName)) {

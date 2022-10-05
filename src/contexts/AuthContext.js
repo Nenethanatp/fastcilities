@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import * as authApi from '../api/authApi';
 import * as userApi from '../api/userApi';
-import { addAccessItem, getAccessToken } from '../utils/localStorage';
+import {
+  addAccessItem,
+  getAccessToken,
+  removeAccessItem,
+} from '../utils/localStorage';
 
 const AuthContext = createContext();
 
@@ -38,8 +42,13 @@ function AuthContextProvider({ children }) {
     await getUser();
   };
 
+  const logout = () => {
+    removeAccessItem();
+    setUser(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, register, login }}>
+    <AuthContext.Provider value={{ user, register, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

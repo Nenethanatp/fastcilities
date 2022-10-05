@@ -1,11 +1,15 @@
 import Container from './Container';
 import { Outlet } from 'react-router-dom';
+import Header from '../header/Header';
 
 function AuthLayout() {
   return (
-    <Container>
-      <Outlet />
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
+    </>
   );
 }
 

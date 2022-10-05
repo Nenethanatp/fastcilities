@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import GeneralButton from '../../components/button/General';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -39,7 +38,7 @@ function LoginForm() {
           <div className="mb-6">
             <input
               name="studentId"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Student ID / Admin ID"
               onChange={handleChangeInput}
             />
@@ -53,12 +52,7 @@ function LoginForm() {
               onChange={handleChangeInput}
             />
           </div>
-          {/* <GeneralButton
-            text="Login"
-            color="red"
-            width="3/5"
-            type="submit"
-          ></GeneralButton> */}
+
           <button
             type="submit"
             className={`text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/5`}
