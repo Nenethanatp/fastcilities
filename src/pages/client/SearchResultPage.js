@@ -4,7 +4,7 @@ import SearchResultContainer from '../../features/user/search/SearchResultContai
 function SearchResultPage() {
   return (
     <div className="bg-gray-200 h-screen">
-      <SearchResultContainer />;
+      <SearchResultContainer />
     </div>
   );
 }

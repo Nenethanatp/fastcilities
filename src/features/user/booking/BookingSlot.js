@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useUserContext } from '../../../contexts/UserContext';
+import Slot from './Slot';
 
 function BookingSlot() {
   const slots = [
@@ -27,19 +29,12 @@ function BookingSlot() {
     '20:00-20:30',
     '20:30-21:00',
   ];
+
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-wrap mx-auto w-4/5 justify-between ">
         {slots.map((slot, index) => {
-          return (
-            <>
-              <div
-                className={` text-gray-700 bg-white border-gray-300  border font-medium rounded-lg text-sm px-5 py-3 text-center w-64 h-12 m-3`}
-              >
-                {slot}
-              </div>
-            </>
-          );
+          return <Slot slot={slot} />;
         })}
       </div>
     </>

@@ -5,10 +5,24 @@ const UserContext = createContext();
 function UserContextProvider({ children }) {
   const [bookingDate, setBookingDate] = useState('');
   const [availableFacs, setAvailableFacs] = useState([]);
-  console.log(availableFacs);
+  const [selectedFac, setSelectedFac] = useState({});
+  const [usedTimeSlots, setUsedTimeSlots] = useState([]);
+  const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
+
   return (
     <UserContext.Provider
-      value={{ bookingDate, setBookingDate, availableFacs, setAvailableFacs }}
+      value={{
+        bookingDate,
+        setBookingDate,
+        availableFacs,
+        setAvailableFacs,
+        usedTimeSlots,
+        setUsedTimeSlots,
+        selectedFac,
+        setSelectedFac,
+        selectedTimeSlots,
+        setSelectedTimeSlots,
+      }}
     >
       {children}
     </UserContext.Provider>
