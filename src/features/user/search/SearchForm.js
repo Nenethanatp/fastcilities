@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAvailableFac } from '../../../api/searchApi';
-import { createSearchParams, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import { useUserContext } from '../../../contexts/UserContext';
 
 function SearchForm() {
-  const [type, setType] = useState('');
-  const [bookingDate, setBookingDate] = useState('');
-  const [facility, setFacility] = useState('');
+  const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
 
   const navigate = useNavigate();
+  const [type, setType] = useState('');
 
   const handleSubmitForm = async (e) => {
     try {
@@ -20,28 +20,16 @@ function SearchForm() {
       const res = await getAvailableFac(type, bookingDate);
 
       if (res.data.facility) {
-        setFacility(res.data.facility);
+        setAvailableFacs(res.data.facility);
+        navigate('/search/result');
       }
     } catch (err) {
       toast.error(err.response?.data.message);
     }
   };
 
-  // console.log(facility);
-  useEffect(() => {
-    if (facility) {
-      navigate({
-        pathname: '/search/result',
-        search: createSearchParams({ facility: facility }).toString(),
-      });
-    }
-  }, [facility]);
-
   return (
     <>
-      {/* {facility ? (
-        <Navigate to="/search/result" />
-      ) : ( */}
       <form onSubmit={handleSubmitForm}>
         <div className=" flex justify-center">
           <div className="w-8/12 flex-col ">
@@ -101,7 +89,6 @@ function SearchForm() {
           </div>
         </div>
       </form>
-      {/* )} */}
     </>
   );
 }
