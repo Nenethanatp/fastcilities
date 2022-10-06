@@ -4,12 +4,18 @@ import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import { useUserContext } from '../../../contexts/UserContext';
+import SearchFormCard from './SearchFormCard';
 
 function SearchForm() {
   const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
-
-  const navigate = useNavigate();
+  const facilityTypes = [
+    { facName: 'Meeting Room', facType: 'room', logo: 'logo1' },
+    { facName: 'Badminton Court', facType: 'badminton', logo: 'logo2' },
+    { facName: 'Basketball Court', facType: 'basketball', logo: 'logo3' },
+  ];
   const [type, setType] = useState('');
+  console.log(type);
+  const navigate = useNavigate();
 
   const handleSubmitForm = async (e) => {
     try {
@@ -18,7 +24,6 @@ function SearchForm() {
         return toast.error('Please select type and booking date');
       }
       const res = await getAvailableFac(type, bookingDate);
-
       if (res.data.facility) {
         setAvailableFacs(res.data.facility);
         navigate('/search/result');
@@ -34,47 +39,16 @@ function SearchForm() {
         <div className=" flex justify-center">
           <div className="w-8/12 flex-col ">
             <div className="flex flex-row justify-between gap-16 pt-52 mb-7">
-              <div
-                className=" max-w-sm bg-white rounded-lg border border-gray-200 shadow-md h-64 w-64 flex-row"
-                name="room"
-                onClick={() => setType('room')}
-              >
-                <div className="flex flex-col items-center pb-10">
-                  <div>img</div>
-                  <h5 className="mb-1 text-xl font-medium text-gray-900">
-                    Meeting Room{' '}
-                  </h5>
-                </div>
-              </div>
-              <div
-                className=" max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-64 w-64 flex-row"
-                name="badminton"
-                onClick={() => setType('badminton')}
-              >
-                <div className="flex flex-col items-center pb-10">
-                  <div>img</div>
-                  <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                    Badminton Court
-                  </h5>
-                </div>
-              </div>
-              <div
-                className=" max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 h-64 w-64 flex-row"
-                name="basketball"
-                onClick={() => setType('basketball')}
-              >
-                <div className="flex flex-col items-center pb-10">
-                  <div>img</div>
-                  <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                    Basketball Court
-                  </h5>
-                </div>
-              </div>
+              {facilityTypes.map((facType) => {
+                return (
+                  <SearchFormCard facType={facType} selectType={setType} />
+                );
+              })}
             </div>
             <div class="relative ">
               <input
                 type="date"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-7 "
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 mb-7 "
                 onChange={(e) => {
                   setBookingDate(e.target.value);
                 }}

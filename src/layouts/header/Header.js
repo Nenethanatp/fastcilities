@@ -4,10 +4,8 @@ import { useAuthContext } from '../../contexts/AuthContext';
 const NavBar = () => {
   const { user, logout } = useAuthContext();
 
-  // console.log(user.firstName);
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-      {/* LOGO BELOW */}
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <div>logo FASTCILITIES</div>
       </div>

@@ -6,13 +6,12 @@ function Slot({ slot }) {
     useUserContext();
 
   const [clickedStyle, setClickedStyle] = useState('');
-  console.log(selectedTimeSlots);
 
   const handleClickSlot = () => {
     if (clickedStyle) {
       setClickedStyle(null);
     } else {
-      setClickedStyle('border-green-600  border');
+      setClickedStyle('ring-2 ring-green-600');
     }
 
     const newSelectedTimeSlots = [...selectedTimeSlots];
@@ -27,9 +26,9 @@ function Slot({ slot }) {
 
   let classStyle = '';
   if (usedTimeSlots.includes(slot)) {
-    classStyle = 'text-white bg-red-500  border-gray-300  border ';
+    classStyle = 'text-white bg-red-500   ';
   } else {
-    classStyle = 'text-gray-700 bg-white  border-gray-300  border ';
+    classStyle = 'text-gray-700 bg-white  ';
   }
 
   return (
