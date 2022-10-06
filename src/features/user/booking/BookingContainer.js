@@ -12,7 +12,7 @@ function BookingContainer() {
   const navigate = useNavigate();
   const handleClick = () => {
     if (durationLimit) {
-      if (selectedTimeSlots.length >= durationLimit * 2) {
+      if (selectedTimeSlots.length > durationLimit * 2) {
         toast.error(`Limit${durationLimit} hr per booking`);
       } else navigate('/booking/confirm');
     }

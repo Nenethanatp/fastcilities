@@ -9,11 +9,6 @@ function ConfirmBookingContainer() {
   const { selectedFac, bookingDate, selectedTimeSlots } = useUserContext();
   const navigate = useNavigate();
 
-  console.log(selectedFac.id);
-  console.log(bookingDate);
-  console.log(typeof bookingDate);
-  console.log(selectedTimeSlots);
-
   const handleClick = async () => {
     try {
       await createBooking(selectedFac.id, bookingDate, selectedTimeSlots);

@@ -1,5 +1,4 @@
 import React from 'react';
-import MyBookingPage from '../../../pages/client/MyBookingPage';
 import MybookingCard from './MybookingCard';
 
 function MyBookingContainer() {
