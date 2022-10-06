@@ -11,15 +11,21 @@ const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
     const fetchMe = async () => {
       try {
+        // console.log('load true');
         if (getAccessToken()) {
-          getUser();
+          await getUser();
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        // console.log('load finish');
+
+        setInitialLoading(false);
       }
     };
     fetchMe();
@@ -40,6 +46,7 @@ function AuthContextProvider({ children }) {
     const res = await authApi.login(input);
     addAccessItem(res.data.token);
     await getUser();
+    // setTimeout(() => getUser(), 2);
   };
 
   const logout = () => {
@@ -48,7 +55,9 @@ function AuthContextProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, register, login, logout, initialLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );

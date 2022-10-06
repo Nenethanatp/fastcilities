@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import GeneralButton from '../../components/button/General';
 import { Link } from 'react-router-dom';
 import { validateUser } from '../../validations/userValidate';
 import { toast } from 'react-toastify';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useLoadingContext } from '../../contexts/LoadingContext';
 
 function RegisterForm() {
   const { register } = useAuthContext();
+  const { startLoading, stopLoading } = useLoadingContext();
   const [input, setInput] = useState({
     studentId: '',
     password: '',
@@ -31,10 +32,13 @@ function RegisterForm() {
       return toast.error(error.message);
     }
     try {
+      startLoading();
       await register(input);
-      // toast.success('Success register');
+      toast.success('Success register');
     } catch (err) {
       toast.error(err.response.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

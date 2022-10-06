@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useLoadingContext } from '../../contexts/LoadingContext';
 
 function LoginForm() {
   const { login } = useAuthContext();
+  const { startLoading, stopLoading } = useLoadingContext();
   const [input, setInput] = useState({
     studentId: '',
     password: '',
@@ -18,11 +20,14 @@ function LoginForm() {
     e.preventDefault();
 
     try {
+      startLoading();
       await login(input);
       toast.success('Success Login');
     } catch (err) {
       console.log(err);
       toast.error(err.response.data.message);
+    } finally {
+      stopLoading();
     }
   };
 
