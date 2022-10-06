@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+// import { useSlotContext } from '../../../contexts/SlotContext';
 import { useUserContext } from '../../../contexts/UserContext';
 
 function Slot({ slot }) {
   const { usedTimeSlots, selectedTimeSlots, setSelectedTimeSlots } =
     useUserContext();
+  //   const { clickedStyle, setClickedStyle } = useSlotContext();
+  const [clickedStyle, setClickedStyle] = useState();
+  console.log(selectedTimeSlots);
 
-  const [clickedStyle, setClickedStyle] = useState('');
+  // useEffect(()=> {}, [])
 
   const handleClickSlot = () => {
     if (clickedStyle) {
@@ -17,7 +21,8 @@ function Slot({ slot }) {
     const newSelectedTimeSlots = [...selectedTimeSlots];
     const index = selectedTimeSlots.indexOf(slot);
     if (index === -1) {
-      selectedTimeSlots.push(slot);
+      newSelectedTimeSlots.push(slot);
+      setSelectedTimeSlots(newSelectedTimeSlots);
     } else {
       newSelectedTimeSlots.splice(index, 1);
       setSelectedTimeSlots(newSelectedTimeSlots);

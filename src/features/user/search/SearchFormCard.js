@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 function SearchFormCard(props) {
   const { facName, facType, logo } = props.facType;
   const selectType = props.selectType;

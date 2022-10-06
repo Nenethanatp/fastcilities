@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useUserContext } from '../../../contexts/UserContext';
 import BookingCard from './BookingCard';
 import BookingSlot from './BookingSlot';
 
 function BookingContainer() {
+  const { selectedFac, selectedTimeSlots, setSelectedTimeSlots } =
+    useUserContext();
+  const { durationLimit } = selectedFac;
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/booking/confirm');
+    if (durationLimit) {
+      if (selectedTimeSlots.length >= durationLimit * 2) {
+        toast.error(`Limit${durationLimit} hr per booking`);
+      } else navigate('/booking/confirm');
+    }
   };
+
+  useEffect(() => {
+    setSelectedTimeSlots([]);
+  }, []);
 
   return (
     <>

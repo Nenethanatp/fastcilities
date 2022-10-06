@@ -8,7 +8,7 @@ function UserContextProvider({ children }) {
   const [selectedFac, setSelectedFac] = useState({});
   const [usedTimeSlots, setUsedTimeSlots] = useState([]);
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
-
+  console.log(selectedTimeSlots);
   return (
     <UserContext.Provider
       value={{

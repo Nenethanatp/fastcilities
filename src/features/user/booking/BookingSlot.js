@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useUserContext } from '../../../contexts/UserContext';
+// import React, { useState } from 'react';
+// import { useUserContext } from '../../../contexts/UserContext';
 import Slot from './Slot';
 
 function BookingSlot() {
@@ -24,7 +24,7 @@ function BookingSlot() {
     '17:30-18:00',
     '18:00-18:30',
     '18:30-19:00',
-    '19.00-19:30',
+    '19:00-19:30',
     '19:30-20:00',
     '20:00-20:30',
     '20:30-21:00',
@@ -34,7 +34,7 @@ function BookingSlot() {
     <>
       <div className="flex flex-wrap mx-auto w-4/5 justify-between ">
         {slots.map((slot, index) => {
-          return <Slot slot={slot} />;
+          return <Slot key={index} slot={slot} />;
         })}
       </div>
     </>

@@ -47,7 +47,10 @@ function ResultCard({ availableFac }) {
                 Open {openTime}-{closeTime}
               </p>
               <p class="text-gray-700 text-base ">{openingDay}</p>
-              <p class="text-gray-700 text-base ">{capacity} Person/room</p>
+              {capacity && (
+                <p class="text-gray-700 text-base ">{capacity} Person/room</p>
+              )}
+
               <p class="text-gray-700 text-base ">
                 Limit {durationLimit} hr/booking
               </p>

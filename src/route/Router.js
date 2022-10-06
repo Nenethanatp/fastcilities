@@ -21,13 +21,13 @@ function Router() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/booking/confirm" element={<ConfirmBookingPage />} />
           <Route path="/my_booking" element={<MyBookingPage />} />
-          {/* <Route path="*" element={<Navigate to="/search" />} /> */}
+          <Route path="*" element={<Navigate to="/search" />} />
         </Route>
       ) : (
         <>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          {/* <Route path="*" element={<Navigate to="/login" />} /> */}
+          <Route path="*" element={<Navigate to="/login" />} />
         </>
       )}
     </Routes>

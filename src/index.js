@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext';
 import UserContextProvider from './contexts/UserContext';
 import LoadingContextProvider from './contexts/LoadingContext';
+import SlotContextProvider from './contexts/SlotContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,9 @@ root.render(
     <LoadingContextProvider>
       <AuthContextProvider>
         <UserContextProvider>
+          {/* <SlotContextProvider> */}
           <App />
+          {/* </SlotContextProvider> */}
         </UserContextProvider>
       </AuthContextProvider>
     </LoadingContextProvider>

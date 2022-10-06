@@ -46,7 +46,6 @@ function AuthContextProvider({ children }) {
     const res = await authApi.login(input);
     addAccessItem(res.data.token);
     await getUser();
-    // setTimeout(() => getUser(), 2);
   };
 
   const logout = () => {
