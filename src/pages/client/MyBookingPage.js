@@ -1,5 +1,5 @@
 import React from 'react';
-import MyBookingContainer from '../../features/user/mybooking/MyBookingContainer';
+import MyBookingContainer from '../../features/user/myBooking/MyBookingContainer';
 
 function MyBookingPage() {
   return (

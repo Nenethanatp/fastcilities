@@ -1,5 +1,6 @@
 export const formatSlot = (selectedTimeSlots) => {
   const slots = [];
+  selectedTimeSlots.sort();
   selectedTimeSlots.reduce((acc, slot, index) => {
     if (index === 0) {
       if (selectedTimeSlots.length === 1) {

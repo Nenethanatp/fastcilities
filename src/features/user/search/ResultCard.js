@@ -52,7 +52,7 @@ function ResultCard({ availableFac }) {
               )}
 
               <p class="text-gray-700 text-base ">
-                Limit {durationLimit} hr/booking
+                {`Limit ${durationLimit} hr/booking`}
               </p>
             </div>
             <button

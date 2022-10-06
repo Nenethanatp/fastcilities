@@ -1,21 +1,36 @@
-import React from 'react';
-import MybookingCard from './MybookingCard';
+import React, { useEffect } from 'react';
+import { getMyBooking } from '../../../api/myBookingApi';
+import { useUserContext } from '../../../contexts/UserContext';
+import MyBookingCard from './MyBookingCard';
 
 function MyBookingContainer() {
+  const { myBookings, setMyBookings } = useUserContext();
+  useEffect(() => {
+    const firstGetMyBooking = async () => {
+      const res = await getMyBooking();
+      const myBookingLists = res.data.myBookingList;
+      setMyBookings(myBookingLists);
+    };
+    firstGetMyBooking();
+  }, []);
+
+  console.log(myBookings);
+
   return (
     <>
       <div className="flex flex-col">
         <div className=" mt-12 ml-16 mb-5 text-xl">My Booking</div>
-        <MybookingCard />
 
-        <div className="flex justify-end">
-          <button
-            type="button"
-            className={`text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
-          >
-            Confirm
-          </button>
-        </div>
+        {myBookings.map((booking, index) => {
+          return (
+            <MyBookingCard
+              key={index}
+              bookingDate={booking.bookingDate}
+              facility={booking.Facility}
+              bookingPeriod={booking.bookingPeriod}
+            />
+          );
+        })}
       </div>
     </>
   );

@@ -8,6 +8,8 @@ function UserContextProvider({ children }) {
   const [selectedFac, setSelectedFac] = useState({});
   const [usedTimeSlots, setUsedTimeSlots] = useState([]);
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
+  const [myBookings, setMyBookings] = useState([]);
+
   console.log(selectedTimeSlots);
   return (
     <UserContext.Provider
@@ -22,6 +24,8 @@ function UserContextProvider({ children }) {
         setSelectedFac,
         selectedTimeSlots,
         setSelectedTimeSlots,
+        myBookings,
+        setMyBookings,
       }}
     >
       {children}
