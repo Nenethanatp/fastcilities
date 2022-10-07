@@ -1,9 +1,13 @@
 import React from 'react';
 import { useUserContext } from '../../../contexts/UserContext';
+import dateFormat from 'dateformat';
 
 function BookingCard() {
   const { selectedFac, bookingDate } = useUserContext();
   const { name, location, image } = selectedFac;
+
+  const bookinDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
+
   return (
     <div>
       <div class="flex justify-center flex-col items-center gap-4 ">
@@ -15,7 +19,7 @@ function BookingCard() {
               <h5 class="text-gray-900 text-sm">{location}</h5>
             </div>
 
-            <h5 class="text-gray-900 text-sm mb-2 ">{bookingDate}</h5>
+            <h5 class="text-gray-900 text-sm mb-2 ">{bookinDateNewFormat}</h5>
           </div>
         </div>
       </div>

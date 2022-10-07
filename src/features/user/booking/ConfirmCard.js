@@ -1,11 +1,14 @@
 import React from 'react';
 import { useUserContext } from '../../../contexts/UserContext';
 import { formatSlot } from '../../../utils/formatSlotTimes';
+import dateFormat from 'dateformat';
 
 function ConfirmCard() {
   const { selectedFac, bookingDate, selectedTimeSlots } = useUserContext();
   // console.log(selectedFac);
   const { name, location, image } = selectedFac;
+
+  const bookinDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
   const slots = formatSlot(selectedTimeSlots);
   const stringSlots = slots.join(', ');
   // console.log(slots);
@@ -18,7 +21,7 @@ function ConfirmCard() {
           <div class="p-6 flex flex-col justify-start">
             <h5 class="text-gray-900 text-xl font-medium ">{name}</h5>
             <h5 class="text-gray-900 text-xl font-medium mb-2">{location}</h5>
-            <p class="text-gray-700 text-base ">Date : {bookingDate}</p>
+            <p class="text-gray-700 text-base ">Date : {bookinDateNewFormat}</p>
             <p class="text-gray-700 text-base ">Time : {stringSlots}</p>
           </div>
         </div>

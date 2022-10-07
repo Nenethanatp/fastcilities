@@ -1,4 +1,5 @@
-import { isEmpty, isAlpha } from 'validator';
+import { isEmpty, isAlpha, isEmail, isMobilePhone } from 'validator';
+import { toast } from 'react-toastify';
 
 export const validateUser = (input) => {
   const error = {};
@@ -15,7 +16,17 @@ export const validateUser = (input) => {
   } = input;
 
   if (isEmpty(firstName) || !isAlpha(firstName)) {
-    error.firstName = 'First name is invalid';
+    return toast.error('First name is invalid');
+  }
+  if (email) {
+    if (!isEmail(email)) {
+      return toast.error('Invalid email format');
+    }
+  }
+  if (phone) {
+    if (!isMobilePhone(phone, 'th-TH')) {
+      return toast.error('Invalid phone format');
+    }
   }
 
   return error;
