@@ -12,7 +12,7 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
-
+  console.log(user);
   useEffect(() => {
     const fetchMe = async () => {
       try {
@@ -30,7 +30,9 @@ function AuthContextProvider({ children }) {
     };
     fetchMe();
   }, []);
-
+  // useEffect(()=> {
+  //   addAccessItem(res.data.token);
+  // })
   const getUser = async () => {
     const res = await userApi.getUser();
     setUser(res.data.user);
@@ -48,14 +50,19 @@ function AuthContextProvider({ children }) {
     await getUser();
   };
 
-  const logout = () => {
+  const logout = async () => {
     removeAccessItem();
     setUser(null);
   };
 
+  const updateProfile = async (profile) => {
+    const res = await userApi.updateUser(profile);
+    setUser(res.data.user);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, register, login, logout, initialLoading }}
+      value={{ user, register, login, logout, initialLoading, updateProfile }}
     >
       {children}
     </AuthContext.Provider>

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useUserContext } from '../../../contexts/UserContext';
 import SearchFormCard from './SearchFormCard';
+import dateFormat from 'dateformat';
 
 function SearchForm() {
   const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
@@ -14,8 +15,10 @@ function SearchForm() {
     { facName: 'Basketball Court', facType: 'basketball', logo: 'logo3' },
   ];
   const [type, setType] = useState('');
-  console.log(type);
   const navigate = useNavigate();
+
+  const today = dateFormat(new Date(), 'yyyy-mm-dd');
+  // console.log(today);
 
   const handleSubmitForm = async (e) => {
     try {
@@ -49,6 +52,7 @@ function SearchForm() {
               <input
                 type="date"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 mb-7 "
+                min={today}
                 onChange={(e) => {
                   setBookingDate(e.target.value);
                 }}

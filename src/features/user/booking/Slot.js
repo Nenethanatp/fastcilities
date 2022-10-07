@@ -5,7 +5,7 @@ function Slot({ slot }) {
   const { usedTimeSlots, selectedTimeSlots, setSelectedTimeSlots } =
     useUserContext();
   const [clickedStyle, setClickedStyle] = useState();
-  console.log(selectedTimeSlots);
+  // console.log(selectedTimeSlots);
 
   const handleClickSlot = () => {
     if (clickedStyle) {

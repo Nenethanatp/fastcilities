@@ -1,4 +1,4 @@
-import Container from './Container';
+// import Container from './Container';
 import { Outlet } from 'react-router-dom';
 import Header from '../header/Header';
 
@@ -6,9 +6,7 @@ function AuthLayout() {
   return (
     <>
       <Header />
-      <Container>
-        <Outlet />
-      </Container>
+      <Outlet />
     </>
   );
 }

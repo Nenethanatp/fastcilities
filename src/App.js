@@ -7,8 +7,9 @@ import { useLoadingContext } from './contexts/LoadingContext';
 function App() {
   const { initialLoading } = useAuthContext();
   const { loading } = useLoadingContext();
+  // console.log = () => {};
 
-  console.log(initialLoading);
+  // console.log(initialLoading);
   if (initialLoading) {
     return <Spinner />;
   }

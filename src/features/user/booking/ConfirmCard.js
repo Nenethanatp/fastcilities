@@ -8,7 +8,7 @@ function ConfirmCard() {
   const { name, location, image } = selectedFac;
   const slots = formatSlot(selectedTimeSlots);
   const stringSlots = slots.join(', ');
-  console.log(slots);
+  // console.log(slots);
 
   return (
     <div className="  w-full">

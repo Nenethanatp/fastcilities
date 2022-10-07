@@ -1,9 +1,16 @@
-function MyBookingCard({ bookingDate, facility, bookingPeriod }) {
+import { deleteMyBooking } from '../../../api/myBookingApi';
+
+function MyBookingCard({ bookingDate, facility, bookingPeriod, bookingId }) {
   const { name, location, image } = facility;
   // console.log(facility);
 
   const bookingPeriodString = bookingPeriod.join(', ');
-  console.log(bookingPeriodString);
+  // console.log(bookingPeriodString);
+
+  const handleClick = async () => {
+    // console.log(bookingId);
+    // await deleteMyBooking(bookingId);
+  };
 
   return (
     <div className="  w-full">
@@ -19,6 +26,7 @@ function MyBookingCard({ bookingDate, facility, bookingPeriod }) {
           <button
             type="button"
             className={`text-white bg-red-400  hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
+            onClick={handleClick}
           >
             Cancel
           </button>

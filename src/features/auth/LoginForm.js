@@ -24,7 +24,7 @@ function LoginForm() {
       await login(input);
       toast.success('Success Login');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.response.data.message);
     } finally {
       stopLoading();
@@ -52,7 +52,7 @@ function LoginForm() {
             <input
               type="password"
               name="password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Password"
               onChange={handleChangeInput}
             />

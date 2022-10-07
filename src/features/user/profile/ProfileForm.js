@@ -1,104 +1,178 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { isEmail, isMobilePhone } from 'validator';
+import { checkPassword } from '../../../api/userApi';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import ProfileImageForm from './ProfileImageForm';
 
 function ProfileForm() {
+  const { user, updateProfile } = useAuthContext();
+  const { firstName, lastName, studentId, image } = user;
+  const updated = {};
+
+  // console.log(updated);
+  const [input, setInput] = useState({});
+
+  const navigate = useNavigate();
+
+  const handleClickCancel = () => {
+    navigate('/search');
+  };
+
+  const handleChangeInput = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+  // console.log(input);
+  // console.log(user);
+
+  const handleSubmit = async () => {
+    try {
+      if (input.oldPassword && input.newPassword && input.confirmPassword) {
+        if (input.newPassword !== input.confirmPassword) {
+          return toast.error('Confirm password not match new password');
+        }
+        await checkPassword(input.oldPassword);
+        updated.password = input.newPassword;
+      } else if (
+        input.oldPassword ||
+        input.newPassword ||
+        input.confirmPassword
+      ) {
+        return toast.error(
+          'Change password must have old password, new pasword and confirm password'
+        );
+      }
+
+      if (input.email) {
+        if (!isEmail(input.email)) {
+          return toast.error('Invalid email format');
+        }
+
+        updated.email = input.email;
+      }
+      if (input.phone) {
+        if (!isMobilePhone(input.phone, 'th-TH')) {
+          return toast.error('Invalid phone format');
+        }
+        updated.phone = input.phone;
+      }
+      if (Object.keys(updated).length === 0) {
+        return toast.error('Nothing to update');
+      }
+
+      const formData = new FormData();
+      Object.keys(updated).forEach((key) => {
+        formData.append(key, updated[key]);
+      });
+
+      await updateProfile(formData);
+      toast.success('Update profile success');
+      navigate('/search');
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
+  };
+
   return (
     <div className=" w-full bg-gray-200 ">
       <div className="flex flex-col items-center p-16">
-        <div>
-          <div class="flex justify-center items-center w-full">
-            <label
-              for="dropzone-file"
-              class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-            >
-              <div class="flex flex-col justify-center items-center pt-5 pb-6">
-                <svg
-                  aria-hidden="true"
-                  class="mb-3 w-10 h-10 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  ></path>
-                </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
-                </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px)
-                </p>
-              </div>
-              <input id="dropzone-file" type="file" class="hidden" />
-            </label>
-          </div>
-        </div>
-        <div>Thanatporn Lawsirirattana</div>
-        <div>6030261021</div>
+        <ProfileImageForm updated={updated} />
+
+        <div>{`${firstName} ${lastName}`}</div>
+        <div>{studentId}</div>
       </div>
       <div className="flex flex-col items-center">
         <form className=" w-5/6 ">
-          <div class="mb-6 flex flex-col items-center">
+          <div class="mb-3 flex flex-col ">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              htmlFor="oldPassword"
+            >
+              Old Password
+            </label>
             <input
+              id="oldPassword"
               type="Password"
               name="oldPassword"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
-              placeholder="Old Password"
-              //   onChange={handleChangeInput}
-              //   value={input.firstName}
+              onChange={handleChangeInput}
             />
           </div>
-          <div className="mb-6 flex justify-between gap-2">
-            <input
-              name="newPassword"
-              type="Password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
-              placeholder="New Password"
-              //   onChange={handleChangeInput}
-              //   value={input.firstName}
-            />
-            <input
-              name="confirmPassword"
-              type="Password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
-              placeholder="Confirm Password"
-              //   onChange={handleChangeInput}
-              //   value={input.lastName}
-            />
+
+          <div className="mb-3 flex justify-between gap-2">
+            <div className=" w-full">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                htmlFor="newPassword"
+              >
+                New Password
+              </label>
+              <input
+                id="newPassword"
+                name="newPassword"
+                type="Password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+                onChange={handleChangeInput}
+              />
+            </div>
+            <div className=" w-full">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                htmlFor="confirmPassword"
+              >
+                Confirm Password
+              </label>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="Password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+                onChange={handleChangeInput}
+              />
+            </div>
           </div>
-          <div class="mb-6">
+          <div class="mb-3">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              htmlFor="email"
+            >
+              Email
+            </label>
             <input
+              id="email"
               name="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
-              placeholder="Email"
-              //   onChange={handleChangeInput}
-              //   value={input.firstName}
+              placeholder={user.email}
+              onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-6">
+          <div class="mb-3">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              htmlFor="Phone"
+            >
+              Phone
+            </label>
             <input
-              name="Phone"
+              name="phone"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
-              placeholder="Phone"
-              //   onChange={handleChangeInput}
-              //   value={input.firstName}
+              placeholder={user.phone}
+              onChange={handleChangeInput}
             />
           </div>
           <div className="flex justify-center">
             <button
               type="button"
               className={`text-white bg-gray-700 hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
+              onClick={handleClickCancel}
             >
               Cancel
             </button>
             <button
               type="button"
               className={`text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
+              onClick={handleSubmit}
             >
               Update
             </button>

@@ -10,7 +10,7 @@ function UserContextProvider({ children }) {
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
   const [myBookings, setMyBookings] = useState([]);
 
-  console.log(selectedTimeSlots);
+  // console.log(selectedTimeSlots);
   return (
     <UserContext.Provider
       value={{

@@ -25,6 +25,7 @@ function MyBookingContainer() {
           return (
             <MyBookingCard
               key={index}
+              bookingId={booking.id}
               bookingDate={booking.bookingDate}
               facility={booking.Facility}
               bookingPeriod={booking.bookingPeriod}

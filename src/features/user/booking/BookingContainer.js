@@ -11,9 +11,13 @@ function BookingContainer() {
   const { durationLimit } = selectedFac;
   const navigate = useNavigate();
   const handleClick = () => {
-    if (durationLimit) {
-      if (selectedTimeSlots.length > durationLimit * 2) {
-        toast.error(`Limit${durationLimit} hr per booking`);
+    if (selectedTimeSlots.length === 0) {
+      toast.error(`Please select time`);
+    } else {
+      if (durationLimit) {
+        if (selectedTimeSlots.length > durationLimit * 2) {
+          toast.error(`Limit ${durationLimit} hr per booking`);
+        } else navigate('/booking/confirm');
       } else navigate('/booking/confirm');
     }
   };
