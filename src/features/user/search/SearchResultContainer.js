@@ -6,8 +6,8 @@ function SearchResultContainer() {
   const { availableFacs } = useUserContext();
   return (
     <>
-      <div className="flex flex-col">
-        <div className=" mt-12 ml-16 mb-5 text-xl">Available</div>
+      <div className="flex flex-col items-center">
+        <div className=" mt-12 w-7/12 mb-5 text-2xl">Available</div>
         {availableFacs?.map((availableFac) => {
           return (
             <ResultCard key={availableFac.id} availableFac={availableFac} />

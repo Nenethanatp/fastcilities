@@ -1,5 +1,5 @@
 function SearchFormCard(props) {
-  const { facName, facType, logo } = props.facType;
+  const { facName, facType, logo, image } = props.facType;
   const { selectType, type } = props;
 
   let clickStyle = '';
@@ -18,8 +18,16 @@ function SearchFormCard(props) {
           selectType(facType);
         }}
       >
-        <div className="flex flex-col items-center pb-10">
-          <i className={logo}></i>
+        <div className="flex flex-col items-center ">
+          {logo ? (
+            <i className={`${logo} text-6xl opacity-40`} />
+          ) : (
+            <img
+              src={image}
+              alt=""
+              className="w-[60px] h-[60px] object-cover opacity-40"
+            />
+          )}
           <h5 className="mb-1 text-xl font-medium text-gray-900">{facName}</h5>
         </div>
       </button>

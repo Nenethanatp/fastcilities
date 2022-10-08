@@ -14,15 +14,19 @@ function Router() {
   return (
     <Routes>
       {user ? (
-        <Route element={<AuthLayout />}>
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/search/result" element={<SearchResultPage />} />
-          <Route path="/booking" element={<BookingPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/booking/confirm" element={<ConfirmBookingPage />} />
-          <Route path="/my_booking" element={<MyBookingPage />} />
-          <Route path="*" element={<Navigate to="/search" />} />
-        </Route>
+        user.role === 'user' ? (
+          <Route element={<AuthLayout />}>
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/search/result" element={<SearchResultPage />} />
+            <Route path="/booking" element={<BookingPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/booking/confirm" element={<ConfirmBookingPage />} />
+            <Route path="/my_booking" element={<MyBookingPage />} />
+            <Route path="*" element={<Navigate to="/search" />} />
+          </Route>
+        ) : (
+          <Route></Route>
+        )
       ) : (
         <>
           <Route path="/login" element={<LoginPage />} />

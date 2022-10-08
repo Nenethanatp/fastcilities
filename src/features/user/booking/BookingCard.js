@@ -10,17 +10,22 @@ function BookingCard() {
 
   return (
     <div>
-      <div class="flex justify-center flex-col items-center gap-4 ">
-        <div class="flex flex-row  rounded-lg bg-white shadow-lg w-8/12 justify-start items-center mb-3 px-10 h-20 mt-8">
-          <img class=" h-20" src={image} alt="" />
-          <div className="flex">
-            <div class="p-6 flex flex-col justify-start">
-              <h5 class="text-gray-900 text-sm">{name}</h5>
-              <h5 class="text-gray-900 text-sm">{location}</h5>
+      <div class="flex justify-center flex-col items-center">
+        <div class="flex flex-row rounded-lg bg-white shadow-lg w-4/5  items-center my-12 p-2 h-20 justify-between ">
+          <div className="flex items-center gap-2">
+            <img
+              class=" h-[65px] rounded-xl object-cover "
+              src={image}
+              alt=""
+            />
+            <div className="flex">
+              <div class="flex flex-col justify-start">
+                <h5 class="text-gray-900 text-sm">{name}</h5>
+                <h5 class="text-gray-900 text-sm">{location}</h5>
+              </div>
             </div>
-
-            <h5 class="text-gray-900 text-sm mb-2 ">{bookinDateNewFormat}</h5>
           </div>
+          <h5 class="text-gray-900 text-sm mr-4 ">{bookinDateNewFormat}</h5>
         </div>
       </div>
     </div>

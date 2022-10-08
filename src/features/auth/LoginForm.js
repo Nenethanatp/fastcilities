@@ -60,7 +60,7 @@ function LoginForm() {
 
           <button
             type="submit"
-            className={`text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/5`}
+            className={`text-white bg-greenSky hover:bg-OldGreenSky font-medium rounded-lg text-sm px-5 py-2.5 text-center w-3/5`}
           >
             Login
           </button>
