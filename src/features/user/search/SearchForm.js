@@ -10,9 +10,21 @@ import dateFormat from 'dateformat';
 function SearchForm() {
   const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
   const facilityTypes = [
-    { facName: 'Meeting Room', facType: 'room', logo: 'logo1' },
-    { facName: 'Badminton Court', facType: 'badminton', logo: 'logo2' },
-    { facName: 'Basketball Court', facType: 'basketball', logo: 'logo3' },
+    {
+      facName: 'Meeting Room',
+      facType: 'room',
+      logo: 'fa-regular fa-building-user',
+    },
+    {
+      facName: 'Badminton Court',
+      facType: 'badminton',
+      logo: 'fa-regular fa-shuttlecock',
+    },
+    {
+      facName: 'Basketball Court',
+      facType: 'basketball',
+      logo: 'fa-regular fa-basketball',
+    },
   ];
   const [type, setType] = useState('');
   const navigate = useNavigate();

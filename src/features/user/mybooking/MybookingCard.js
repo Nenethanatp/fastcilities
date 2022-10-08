@@ -1,6 +1,7 @@
 import { deleteMyBooking } from '../../../api/myBookingApi';
 import dateFormat from 'dateformat';
-
+import { useModal } from '../../../contexts/ModalContext';
+import CancelCard from './CancelCard';
 function MyBookingCard({
   bookingDate,
   facility,
@@ -11,15 +12,12 @@ function MyBookingCard({
   const { name, location, image } = facility;
   // console.log(facility);
   // console.log(type);
+  const { openModal, openFormModal, closeFormModal } = useModal();
+
   const bookinDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
 
   const bookingPeriodString = bookingPeriod.join(', ');
   // console.log(bookingPeriodString);
-
-  const handleClick = async () => {
-    // console.log(bookingId);
-    // await deleteMyBooking(bookingId);
-  };
 
   let cardStyle = '';
   if (type === 'today') {
@@ -46,7 +44,20 @@ function MyBookingCard({
             <button
               type="button"
               className="text-white bg-red-400  hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3"
-              onClick={handleClick}
+              onClick={() =>
+                openFormModal({
+                  header: 'Do you want to cancel booking ?',
+                  body: (
+                    <CancelCard
+                      bookinDateNewFormat={bookinDateNewFormat}
+                      facility={facility}
+                      bookingPeriodString={bookingPeriodString}
+                      bookingId={bookingId}
+                      type={type}
+                    />
+                  ),
+                })
+              }
             >
               Cancel
             </button>

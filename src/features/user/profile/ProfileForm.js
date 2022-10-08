@@ -70,7 +70,7 @@ function ProfileForm() {
       toast.success('Update profile success');
       navigate('/search');
     } catch (err) {
-      toast.error(err.response.data.message);
+      toast.error(err.response?.data.message);
     }
   };
 
