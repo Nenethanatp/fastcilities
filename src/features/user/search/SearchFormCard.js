@@ -1,15 +1,19 @@
 function SearchFormCard(props) {
   const { facName, facType, logo } = props.facType;
-  const selectType = props.selectType;
+  const { selectType, type } = props;
 
+  let clickStyle = '';
+  if (type === facType) {
+    clickStyle = 'border-green-600 border-2';
+  }
   return (
     <>
       <button
         type="button"
-        className={`max-w-sm bg-white rounded-lg border shadow-md h-64 w-64 flex-row focus:z-10 focus:ring-2 focus:ring-green-700
+        className={`max-w-sm bg-white rounded-lg border shadow-md h-64 w-64 flex-row ${clickStyle}
         
         `}
-        name="room"
+        name={facType}
         onClick={() => {
           selectType(facType);
         }}

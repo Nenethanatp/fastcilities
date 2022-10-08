@@ -13,17 +13,17 @@ function SearchForm() {
     {
       facName: 'Meeting Room',
       facType: 'room',
-      logo: 'fa-regular fa-building-user',
+      logo: 'fa-solid fa-building-user',
     },
     {
       facName: 'Badminton Court',
       facType: 'badminton',
-      logo: 'fa-regular fa-shuttlecock',
+      logo: 'fa-solid fa-shuttlecock',
     },
     {
       facName: 'Basketball Court',
       facType: 'basketball',
-      logo: 'fa-regular fa-basketball',
+      logo: 'fa-solid fa-basketball',
     },
   ];
   const [type, setType] = useState('');
@@ -56,7 +56,11 @@ function SearchForm() {
             <div className="flex flex-row justify-between gap-16 pt-52 mb-7">
               {facilityTypes.map((facType) => {
                 return (
-                  <SearchFormCard facType={facType} selectType={setType} />
+                  <SearchFormCard
+                    facType={facType}
+                    selectType={setType}
+                    type={type}
+                  />
                 );
               })}
             </div>
