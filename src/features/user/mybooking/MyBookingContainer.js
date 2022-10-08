@@ -32,9 +32,9 @@ function MyBookingContainer() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center w-full">
         <div className=" mt-12 w-7/12 mb-5 text-2xl">My Booking</div>
-        <div>
+        <div className="w-full">
           {todayBooking.length !== 0 &&
             todayBooking.map((booking) => {
               return (
