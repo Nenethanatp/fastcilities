@@ -8,13 +8,14 @@ function MyBookingCard({
   bookingPeriod,
   bookingId,
   type,
+  tmr,
 }) {
   const { name, location, image } = facility;
   // console.log(facility);
   // console.log(type);
   const { openModal, openFormModal, closeFormModal } = useModal();
 
-  const bookinDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
+  const bookingDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
 
   const bookingPeriodString = bookingPeriod.join(', ');
   // console.log(bookingPeriodString);
@@ -27,6 +28,7 @@ function MyBookingCard({
   if (type === 'prev') {
     cardStyle = 'opacity-30';
   }
+
   return (
     <div className="w-full">
       <div class="flex justify-center flex-col items-center gap-4 w-full">
@@ -39,14 +41,14 @@ function MyBookingCard({
               <h5 class="text-gray-900 text-xl font-medium ">{name}</h5>
               <h5 class="text-gray-900 text-xl font-medium mb-2">{location}</h5>
               <p class="text-gray-700 text-base ">
-                Date : {bookinDateNewFormat}
+                Date : {bookingDateNewFormat}
               </p>
               <p class="text-gray-700 text-base ">
                 Time : {bookingPeriodString}
               </p>
             </div>
           </div>
-          {type === 'later' && (
+          {type === 'later' && tmr !== bookingDate && (
             <button
               type="button"
               className="text-white bg-red-400  hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3"
@@ -55,7 +57,7 @@ function MyBookingCard({
                   header: 'Do you want to cancel booking ?',
                   body: (
                     <CancelCard
-                      bookinDateNewFormat={bookinDateNewFormat}
+                      bookinDateNewFormat={bookingDateNewFormat}
                       facility={facility}
                       bookingPeriodString={bookingPeriodString}
                       bookingId={bookingId}

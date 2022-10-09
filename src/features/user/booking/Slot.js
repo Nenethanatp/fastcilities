@@ -27,7 +27,7 @@ function Slot({ slot }) {
 
   let classStyle = '';
   if (usedTimeSlots.includes(slot)) {
-    classStyle = 'text-white bg-red-500   ';
+    classStyle = 'text-white bg-gray-300   ';
   } else {
     classStyle = 'text-gray-700 bg-white  ';
   }

@@ -18,7 +18,10 @@ function MyBookingContainer() {
   console.log(myBookings);
 
   const today = dateFormat(new Date(), 'yyyy-mm-dd');
-  console.log(today);
+  const todayObj = new Date();
+  const tmrObj = new Date(todayObj);
+  tmrObj.setDate(tmrObj.getDate() + 1);
+  const tmr = dateFormat(tmrObj, 'yyyy-mm-dd');
 
   const prevBooking = myBookings.filter(
     (booking) => booking.bookingDate < today
@@ -58,6 +61,7 @@ function MyBookingContainer() {
                   facility={booking.Facility}
                   bookingPeriod={booking.bookingPeriod}
                   type={'later'}
+                  tmr={tmr}
                 />
               );
             })}
