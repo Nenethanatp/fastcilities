@@ -14,7 +14,7 @@ function BookingCard() {
         <div class="flex flex-row rounded-lg bg-white shadow-lg w-4/5  items-center my-12 p-2 h-20 justify-between ">
           <div className="flex items-center gap-2">
             <img
-              class=" h-[65px] rounded-xl object-cover "
+              class=" h-[65px] rounded-lg object-cover "
               src={image}
               alt=""
             />

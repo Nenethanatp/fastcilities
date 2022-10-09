@@ -14,7 +14,7 @@ function Router() {
   return (
     <Routes>
       {user ? (
-        user.role === 'user' ? (
+        user.role !== 'admin' ? (
           <Route element={<AuthLayout />}>
             <Route path="/search" element={<SearchPage />} />
             <Route path="/search/result" element={<SearchResultPage />} />

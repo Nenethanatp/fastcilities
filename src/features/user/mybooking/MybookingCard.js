@@ -35,8 +35,12 @@ function MyBookingCard({
         <div
           class={`flex flex-row  rounded-lg bg-white shadow-lg w-7/12 justify-between items-center mb-3 p-5 ${cardStyle}`}
         >
-          <div className="flex items-center gap-5">
-            <img class="w-60 h-36 object-cover" src={image} alt="" />
+          <div className="flex items-center gap-5 ">
+            <img
+              class="w-60 h-36 object-cover  rounded-lg"
+              src={image}
+              alt=""
+            />
             <div class=" flex flex-col justify-start">
               <h5 class="text-gray-900 text-xl font-medium ">{name}</h5>
               <h5 class="text-gray-900 text-xl font-medium mb-2">{location}</h5>
