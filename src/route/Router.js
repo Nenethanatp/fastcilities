@@ -1,5 +1,5 @@
 import { Navigate, Routes, Route } from 'react-router-dom';
-import AuthLayout from '../layouts/auth/AuthLayout';
+import UserLayout from '../layouts/user/UserLayout';
 import SearchPage from '../pages/client/SearchPage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
@@ -15,7 +15,7 @@ function Router() {
     <Routes>
       {user ? (
         user.role !== 'admin' ? (
-          <Route element={<AuthLayout />}>
+          <Route element={<UserLayout />}>
             <Route path="/search" element={<SearchPage />} />
             <Route path="/search/result" element={<SearchResultPage />} />
             <Route path="/booking" element={<BookingPage />} />
@@ -25,7 +25,9 @@ function Router() {
             <Route path="*" element={<Navigate to="/search" />} />
           </Route>
         ) : (
-          <Route></Route>
+          ''
+
+          // <Route element={<AdminLayout />}></Route>
         )
       ) : (
         <>

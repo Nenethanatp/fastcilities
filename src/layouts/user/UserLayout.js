@@ -2,7 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../header/Header';
 
-function AuthLayout() {
+function UserLayout() {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ function AuthLayout() {
   );
 }
 
-export default AuthLayout;
+export default UserLayout;
