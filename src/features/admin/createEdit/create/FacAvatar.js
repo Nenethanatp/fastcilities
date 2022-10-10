@@ -1,4 +1,4 @@
-import noImage from '../../../assets/images/noImage1.png';
+import noImage from '../../../../assets/images/noImage1.png';
 function FacAvatar({ src, size, borderSize, borderColor }) {
   const classes = `${borderSize ? ' border border-' + borderSize : ''}${
     borderColor ? ' border-' + borderColor : ''

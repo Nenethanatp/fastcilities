@@ -7,3 +7,11 @@ export const getAllFac = () => {
 export const createNewFac = (input) => {
   return axios.post('/admin/new_fac', input);
 };
+
+export const getFac = (id) => {
+  return axios.get(`/admin/fac/${id}`);
+};
+
+export const updateFac = (id, input) => {
+  return axios.patch(`admin/fac/${id}`, input);
+};

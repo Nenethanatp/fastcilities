@@ -31,3 +31,5 @@ export const formatSlot = (selectedTimeSlots) => {
 
   return slots;
 };
+
+//[17:00-17:30,17:30-18:00, 21:00-21:30] => [17:00-18:00, 21:00-21:30]

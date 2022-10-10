@@ -8,8 +8,6 @@ function FacContextProvider({ children }) {
   const [allFacs, setAllFacs] = useState([]);
   const [selectedFac, setSelectedFac] = useState({});
 
-  console.log(allFacs);
-
   const getAllFacFn = async () => {
     const res = await facApi.getAllFac();
     setAllFacs(res.data.allFacility);

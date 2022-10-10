@@ -5,7 +5,7 @@ const newFacSchema = Joi.object({
   name: Joi.string().required().empty(''),
   location: Joi.string().required().empty(''),
   capacity: Joi.number(),
-  durationLimit: Joi.number().less(24).empty(''),
+  durationLimit: Joi.number().less(24).min(0.5).empty(''),
   openingDay: Joi.string().required().empty(''),
   openTime: Joi.string().required().empty(''),
   closeTime: Joi.string().required().empty(''),

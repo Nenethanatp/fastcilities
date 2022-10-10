@@ -3,7 +3,7 @@ import CreateEditContainer from '../../features/admin/createEdit/CreateEditConta
 
 function CreateEditPage() {
   return (
-    <div className="bg-gray-200 h-full">
+    <div className="bg-gray-200 ">
       <CreateEditContainer />
     </div>
   );

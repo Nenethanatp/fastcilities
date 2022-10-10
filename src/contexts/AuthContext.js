@@ -12,7 +12,6 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
-  console.log(user);
   useEffect(() => {
     const fetchMe = async () => {
       try {

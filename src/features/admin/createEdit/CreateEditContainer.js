@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useFacContext } from '../../../contexts/FacContext';
 import { useModal } from '../../../contexts/ModalContext';
-import CreateFacForm from './CreateFacForm';
+import CreateFacForm from './create/CreateFacForm';
 import EditFacCard from './EditFacCard';
 
 function CreateEditContainer() {
@@ -38,7 +38,11 @@ function CreateEditContainer() {
         </div>
 
         {allFacs?.map((fac) => {
-          return <EditFacCard key={fac.id} fac={fac} />;
+          if (fac) {
+            return <EditFacCard key={fac.id} fac={fac} />;
+          } else {
+            return null;
+          }
         })}
 
         <div className="flex justify-end"></div>

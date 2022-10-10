@@ -22,7 +22,7 @@ function FacImageForm({ input }) {
           }}
         />
       </div>
-      <div className="text-center mt-3">
+      <div className="text-center mt-8 mb-8">
         <span onClick={() => inputEl.current.click()}>
           <FacAvatar src={file ? URL.createObjectURL(file) : null} />
         </span>

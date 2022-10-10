@@ -1,28 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useFacContext } from '../../../contexts/FacContext';
-import { validateNewFac } from '../../../validations/validateNewFac';
-import * as facApi from '../../../api/facApi';
-import { useModal } from '../../../contexts/ModalContext';
-import FacImageForm from './FacImageForm';
-
-function CreateFacForm() {
+import { useModal } from '../../../../contexts/ModalContext';
+import EditImageForm from './EditImageForm';
+import * as facApi from '../../../../api/facApi';
+import { validateNewFac } from '../../../../validations/validateNewFac';
+import { useFacContext } from '../../../../contexts/FacContext';
+function EditForm({ fac }) {
   const { closeFormModal } = useModal();
-  const { setAllFacs, allFacs } = useFacContext();
+  const { setAllFacs } = useFacContext();
+  const {
+    id,
+    type,
+    name,
+    location,
+    capacity,
+    durationLimit,
+    openingDay,
+    openTime,
+    closeTime,
+    image,
+    status,
+  } = fac;
 
   const [input, setInput] = useState({
-    type: '',
-    name: '',
-    location: '',
-    capacity: 0,
-    durationLimit: '',
-    openingDay: '',
-    openTime: '',
-    closeTime: '',
-    image: '',
-    status: '',
+    type,
+    name,
+    location,
+    capacity,
+    durationLimit,
+    openingDay,
+    openTime,
+    closeTime,
+    image,
+    status,
   });
-  console.log(input);
 
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -30,28 +41,25 @@ function CreateFacForm() {
 
   const handleSubmit = async () => {
     try {
-      if (input.capacity === '') {
+      if (!input.capacity) {
         input.capacity = 0;
       }
+      console.log(input);
       const { error } = validateNewFac(input);
       if (error) {
         return toast.error(error.message);
       }
-      if (input.image === '') {
-        return toast.error('Require facility photo');
-      }
-
+      // if (input.image === '') {
+      //   return toast.error('Require facility photo');
+      // }
       const formData = new FormData();
       Object.keys(input).forEach((key) => {
         formData.append(key, input[key]);
       });
-
-      const res = await facApi.createNewFac(formData);
-      console.log(res.data.newFacility);
-
-      setAllFacs([...allFacs, res.data.newFacility]);
-      //   setAllFacs(res.data.allFacility);
-      toast.success('Success create new facility');
+      const res = await facApi.updateFac(id, formData);
+      console.log(res.data.allFacs);
+      setAllFacs(res.data.allFacs);
+      toast.success('Success edit facility');
       closeFormModal();
     } catch (err) {
       toast.error(err.response?.data.message);
@@ -60,8 +68,9 @@ function CreateFacForm() {
 
   return (
     <div className=" w-full">
+      <hr />
       <div className="flex flex-col items-center ">
-        <FacImageForm input={input} />
+        <EditImageForm input={input} setInput={setInput} />
       </div>
       <div className="flex flex-col items-center">
         <form className=" w-5/6 ">
@@ -76,6 +85,7 @@ function CreateFacForm() {
               id="type"
               name="type"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              value={input.type}
               onChange={handleChangeInput}
             >
               <option hidden></option>
@@ -95,6 +105,7 @@ function CreateFacForm() {
               id="name"
               name="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              value={input.name}
               onChange={handleChangeInput}
             />
           </div>
@@ -109,6 +120,7 @@ function CreateFacForm() {
               id="location"
               name="location"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              value={input.location}
               onChange={handleChangeInput}
             />
           </div>
@@ -123,6 +135,7 @@ function CreateFacForm() {
               id="capacity"
               name="capacity"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              value={input.capacity}
               onChange={handleChangeInput}
             />
           </div>
@@ -137,6 +150,7 @@ function CreateFacForm() {
               id="status"
               name="status"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
+              value={input.status}
               onChange={handleChangeInput}
             >
               <option hidden></option>
@@ -156,6 +170,7 @@ function CreateFacForm() {
               name="durationLimit"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
               onChange={handleChangeInput}
+              value={input.durationLimit}
             />
           </div>
           <div class="mb-3">
@@ -169,6 +184,7 @@ function CreateFacForm() {
               name="openingDay"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
               placeholder={'ex. Mon-Fri'}
+              value={input.openingDay}
               onChange={handleChangeInput}
             />
           </div>
@@ -187,6 +203,7 @@ function CreateFacForm() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
                   placeholder="ex. 12:00"
                   onChange={handleChangeInput}
+                  value={input.openTime}
                 />
               </div>
               <div className=" w-full">
@@ -202,6 +219,7 @@ function CreateFacForm() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 "
                   placeholder="ex. 20:00"
                   onChange={handleChangeInput}
+                  value={input.closeTime}
                 />
               </div>
             </div>
@@ -219,7 +237,7 @@ function CreateFacForm() {
               className={`text-white bg-greenSky hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
               onClick={handleSubmit}
             >
-              Create
+              Submit
             </button>
           </div>
         </form>
@@ -228,4 +246,4 @@ function CreateFacForm() {
   );
 }
 
-export default CreateFacForm;
+export default EditForm;

@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getAvailableTime } from '../../../api/searchApi';
-import { useUserContext } from '../../../contexts/UserContext';
+import { useModal } from '../../../contexts/ModalContext';
+import EditForm from './edit/EditForm';
 
 function EditFacCard({ fac }) {
   const {
@@ -17,7 +18,11 @@ function EditFacCard({ fac }) {
     image,
   } = fac;
 
-  const navigate = useNavigate();
+  const { openFormModal } = useModal();
+
+  const handleClick = () => {
+    openFormModal({ header: 'Edit', body: <EditForm fac={fac} /> });
+  };
 
   return (
     <>
@@ -51,7 +56,7 @@ function EditFacCard({ fac }) {
             <button
               type="button"
               className={`text-white bg-peach hover:bg-oldPeach font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[10rem]  h-12 m-3`}
-              // onClick={handleClick}
+              onClick={handleClick}
             >
               Edit
             </button>
