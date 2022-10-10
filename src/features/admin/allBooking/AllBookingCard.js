@@ -21,7 +21,7 @@ function AllBookingCard({ booking }) {
       <div className="  w-full">
         <div class="flex justify-center flex-col items-center gap-4 ">
           <div class="flex flex-row  rounded-lg bg-white shadow-lg w-7/12  items-center mb-3 justify-between h-[180px] ">
-            <div className="flex items-center gap-5 p-5">
+            <div className="flex items-center gap-5 p-5 w-9/12">
               <img
                 class=" w-60 h-36 object-cover rounded-lg"
                 src={facImage}
@@ -49,7 +49,7 @@ function AllBookingCard({ booking }) {
             >
               Show Available
             </button> */}
-            <div className="p-5 w-[300px] bg-yellow- h-full bg-grayNav flex flex-col justify-center text-white text-base rounded-r-lg opacity-60">
+            <div className="p-5 w-3/12 bg-yellow- h-full bg-grayNav flex flex-col justify-center text-white text-base rounded-r-lg opacity-60">
               <p class=" ">Booking id: {bookingId}</p>
               <p class=" ">Booked by: {`${firstName} ${lastName}`}</p>
               <p class=" ">User id: {studentId}</p>
