@@ -10,8 +10,9 @@ import ConfirmBookingPage from '../pages/client/ConfirmBookingPage';
 import MyBookingPage from '../pages/client/MyBookingPage';
 import ProfilePage from '../pages/client/ProfilePage';
 import AdminLayout from '../layouts/admin/AdminLayout';
-import CancelPage from '../pages/admin/CancelPage';
+// import CancelPage from '../pages/admin/CancelPage';
 import CreateEditPage from '../pages/admin/CreateEditPage';
+import AllBookingPage from '../pages/admin/AllBookingPage';
 function Router() {
   const { user } = useAuthContext();
   return (
@@ -30,9 +31,9 @@ function Router() {
         ) : (
           <Route element={<AdminLayout />}>
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/cancel" element={<CancelPage />} />
+            <Route path="/all_booking" element={<AllBookingPage />} />
             <Route path="/create_edit" element={<CreateEditPage />} />
-            <Route path="*" element={<Navigate to="/search" />} />
+            <Route path="*" element={<Navigate to="/all_booking" />} />
           </Route>
         )
       ) : (

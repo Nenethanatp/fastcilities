@@ -11,3 +11,7 @@ export const createBooking = async (
     bookingTimeSlot,
   });
 };
+
+export const getAllBooking = () => {
+  return axios.get('/admin/all_booking');
+};

@@ -15,17 +15,17 @@ function AdminHeader() {
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto gap-10">
         <div className="text-sm lg:flex-grow flex justify-end gap-3">
           <Link
-            to="/search"
+            to="/allBooking"
             className={
-              page === 'cancel'
+              page === 'allBooking'
                 ? 'text-bold text-peach block lg:inline-block lg:mt-0 mr-4 mt-4 '
                 : 'block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4'
             }
             onClick={() => {
-              setPage('cancel');
+              setPage('allBooking');
             }}
           >
-            Cancel
+            All booking
           </Link>
           <Link
             to="/create_edit"

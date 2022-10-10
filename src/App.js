@@ -8,9 +8,7 @@ import Modal from './components/ui/Modal';
 function App() {
   const { initialLoading } = useAuthContext();
   const { loading } = useLoadingContext();
-  // console.log = () => {};
 
-  // console.log(initialLoading);
   if (initialLoading) {
     return <Spinner />;
   }
