@@ -1,4 +1,3 @@
-import { deleteMyBooking } from '../../../api/myBookingApi';
 import dateFormat from 'dateformat';
 import { useModal } from '../../../contexts/ModalContext';
 import CancelCard from './CancelCard';
@@ -14,7 +13,6 @@ function MyBookingCard({
   // console.log(facility);
   // console.log(type);
   const { openModal, openFormModal, closeFormModal } = useModal();
-
   const bookingDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
 
   const bookingPeriodString = bookingPeriod.join(', ');

@@ -7,7 +7,7 @@ function Avatar({ src, size, borderSize, borderColor }) {
   return (
     <img
       src={src || profileImage}
-      className={` rounded-full cursor-pointer${classes}`}
+      className={` object-cover rounded-full cursor-pointer${classes}`}
       alt="user"
     />
   );

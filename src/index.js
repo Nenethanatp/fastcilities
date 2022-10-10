@@ -10,6 +10,7 @@ import AuthContextProvider from './contexts/AuthContext';
 import UserContextProvider from './contexts/UserContext';
 import LoadingContextProvider from './contexts/LoadingContext';
 import ModalContextProvider from './contexts/ModalContext';
+import FacContextProvider from './contexts/FacContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +19,9 @@ root.render(
       <ModalContextProvider>
         <AuthContextProvider>
           <UserContextProvider>
-            <App />
+            <FacContextProvider>
+              <App />
+            </FacContextProvider>
           </UserContextProvider>
         </AuthContextProvider>
       </ModalContextProvider>

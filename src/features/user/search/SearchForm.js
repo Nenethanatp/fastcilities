@@ -6,6 +6,7 @@ import { useUserContext } from '../../../contexts/UserContext';
 import SearchFormCard from './SearchFormCard';
 import dateFormat from 'dateformat';
 import badminton from '../../../assets/icon/badminton.png';
+import { useAuthContext } from '../../../contexts/AuthContext';
 
 function SearchForm() {
   const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
@@ -29,6 +30,7 @@ function SearchForm() {
   ];
   const [type, setType] = useState('');
   const navigate = useNavigate();
+  const { user } = useAuthContext();
 
   const today = dateFormat(new Date(), 'yyyy-mm-dd');
   // console.log(today);
@@ -42,7 +44,7 @@ function SearchForm() {
       const res = await getAvailableFac(type, bookingDate);
       if (res.data.facility) {
         setAvailableFacs(res.data.facility);
-        navigate('/search/result');
+        user.role === 'user' ? navigate('/search/result') : navigate('/cancel');
       }
     } catch (err) {
       toast.error(err.response?.data.message);

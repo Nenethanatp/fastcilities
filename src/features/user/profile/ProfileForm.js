@@ -8,7 +8,7 @@ import ProfileImageForm from './ProfileImageForm';
 
 function ProfileForm() {
   const { user, updateProfile } = useAuthContext();
-  const { firstName, lastName, studentId, image } = user;
+  const { firstName, lastName, studentId } = user;
   const updated = {};
 
   // console.log(updated);
@@ -78,7 +78,6 @@ function ProfileForm() {
     <div className=" w-full bg-gray-200 ">
       <div className="flex flex-col items-center p-16">
         <ProfileImageForm updated={updated} />
-
         <div>{`${firstName} ${lastName}`}</div>
         <div>{studentId}</div>
       </div>

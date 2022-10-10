@@ -16,23 +16,18 @@ function AuthContextProvider({ children }) {
   useEffect(() => {
     const fetchMe = async () => {
       try {
-        // console.log('load true');
         if (getAccessToken()) {
           await getUser();
         }
       } catch (err) {
         console.log(err);
       } finally {
-        // console.log('load finish');
-
         setInitialLoading(false);
       }
     };
     fetchMe();
   }, []);
-  // useEffect(()=> {
-  //   addAccessItem(res.data.token);
-  // })
+
   const getUser = async () => {
     const res = await userApi.getUser();
     setUser(res.data.user);

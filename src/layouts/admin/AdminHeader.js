@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import emptyImage from '../../assets/images/profile-image.png';
 
-const NavBar = () => {
+function AdminHeader() {
   const { user, logout } = useAuthContext();
   const [page, setPage] = useState('search');
 
@@ -18,28 +17,28 @@ const NavBar = () => {
           <Link
             to="/search"
             className={
-              page === 'search'
+              page === 'cancel'
                 ? 'text-bold text-peach block lg:inline-block lg:mt-0 mr-4 mt-4 '
                 : 'block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4'
             }
             onClick={() => {
-              setPage('search');
+              setPage('cancel');
             }}
           >
-            Search
+            Cancel
           </Link>
           <Link
-            to="/my_booking"
+            to="/create_edit"
             className={
-              page === 'myBooking'
+              page === 'createEdit'
                 ? 'text-bold text-peach block lg:inline-block lg:mt-0 mr-4 mt-4 '
                 : 'block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4'
             }
             onClick={() => {
-              setPage('myBooking');
+              setPage('createEdit');
             }}
           >
-            My Booking
+            Create/Edit
           </Link>
           <Link
             to="/auth/login"
@@ -54,22 +53,16 @@ const NavBar = () => {
         <div className="flex items-center gap-2">
           <div>
             <img
-              src={user.image || emptyImage}
+              src={user.image}
               alt="user img"
               className="w-[45px] h-[45px] rounded-full object-cover"
             ></img>
           </div>
           <div>
             <Link
-              to="/profile"
               className={
-                page === 'profile'
-                  ? 'text-bold text-peach block lg:inline-block lg:mt-0 mr-4 mt-4 '
-                  : 'block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4'
+                'block mt-4 lg:inline-block lg:mt-0 text-gray-400  mr-4'
               }
-              onClick={() => {
-                setPage('profile');
-              }}
             >
               {user.firstName}
             </Link>
@@ -78,6 +71,6 @@ const NavBar = () => {
       </div>
     </nav>
   );
-};
+}
 
-export default NavBar;
+export default AdminHeader;

@@ -3,7 +3,7 @@ import MyBookingContainer from '../../features/user/myBooking/MyBookingContainer
 
 function MyBookingPage() {
   return (
-    <div className="bg-gray-200  h-full">
+    <div className="bg-gray-200  h-screen">
       <MyBookingContainer />
     </div>
   );

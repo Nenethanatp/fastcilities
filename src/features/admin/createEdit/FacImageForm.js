@@ -1,17 +1,13 @@
 import React, { useRef, useState } from 'react';
-import Avatar from '../../../components/ui/Avatar';
-import { useAuthContext } from '../../../contexts/AuthContext';
+import FacAvatar from './FacAvatar';
 
-function ProfileImageForm({ updated }) {
-  const { user } = useAuthContext();
-  const [file, setFile] = useState(null);
+function FacImageForm({ input }) {
   const inputEl = useRef();
+  const [file, setFile] = useState(null);
 
   if (file) {
-    updated.image = file;
+    input.image = file;
   }
-  // console.log(updated);
-  // console.log(user.image);
   return (
     <>
       <div className="flex justify-content-between items-center">
@@ -28,11 +24,11 @@ function ProfileImageForm({ updated }) {
       </div>
       <div className="text-center mt-3">
         <span onClick={() => inputEl.current.click()}>
-          <Avatar src={file ? URL.createObjectURL(file) : user.image} />
+          <FacAvatar src={file ? URL.createObjectURL(file) : null} />
         </span>
       </div>
     </>
   );
 }
 
-export default ProfileImageForm;
+export default FacImageForm;
