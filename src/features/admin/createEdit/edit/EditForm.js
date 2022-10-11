@@ -74,7 +74,7 @@ function EditForm({ fac }) {
       </div>
       <div className="flex flex-col items-center">
         <form className=" w-5/6 ">
-          <div class="mb-3 flex flex-col ">
+          <div className="mb-3 flex flex-col ">
             <label
               class="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="type"
@@ -94,9 +94,9 @@ function EditForm({ fac }) {
               <option value="basketball"> Basketball Court</option>
             </select>
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="name"
             >
               Name
@@ -109,9 +109,9 @@ function EditForm({ fac }) {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="location"
             >
               Location
@@ -124,7 +124,7 @@ function EditForm({ fac }) {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
               class="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="capacity"
@@ -139,9 +139,9 @@ function EditForm({ fac }) {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3 flex flex-col ">
+          <div className="mb-3 flex flex-col ">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="type"
             >
               Status
@@ -159,9 +159,9 @@ function EditForm({ fac }) {
             </select>
           </div>
 
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="durationLimit"
             >
               Duration Limit
@@ -173,9 +173,9 @@ function EditForm({ fac }) {
               value={input.durationLimit}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="openingDay"
             >
               Opening Day
@@ -188,11 +188,11 @@ function EditForm({ fac }) {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="mb-3 flex justify-between gap-2">
               <div className=" w-full">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                  className="block text-gray-700 text-sm font-bold mb-1 ml-2"
                   htmlFor="openTime"
                 >
                   Open Time
@@ -208,7 +208,7 @@ function EditForm({ fac }) {
               </div>
               <div className=" w-full">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                  className="block text-gray-700 text-sm font-bold mb-1 ml-2"
                   htmlFor="closeTime"
                 >
                   Close Time

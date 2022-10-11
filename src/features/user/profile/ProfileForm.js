@@ -83,7 +83,7 @@ function ProfileForm() {
       </div>
       <div className="flex flex-col items-center">
         <form className=" w-5/6 ">
-          <div class="mb-3 flex flex-col ">
+          <div className="mb-3 flex flex-col ">
             <label
               class="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="oldPassword"
@@ -102,7 +102,7 @@ function ProfileForm() {
           <div className="mb-3 flex justify-between gap-2">
             <div className=" w-full">
               <label
-                class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                className="block text-gray-700 text-sm font-bold mb-1 ml-2"
                 htmlFor="newPassword"
               >
                 New Password
@@ -117,7 +117,7 @@ function ProfileForm() {
             </div>
             <div className=" w-full">
               <label
-                class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                className="block text-gray-700 text-sm font-bold mb-1 ml-2"
                 htmlFor="confirmPassword"
               >
                 Confirm Password
@@ -133,7 +133,7 @@ function ProfileForm() {
           </div>
           <div class="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="email"
             >
               Email
@@ -146,9 +146,9 @@ function ProfileForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="Phone"
             >
               Phone

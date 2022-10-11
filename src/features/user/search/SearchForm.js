@@ -67,10 +67,10 @@ function SearchForm() {
                 );
               })}
             </div>
-            <div class="relative w-full">
+            <div className="relative w-full">
               <input
                 type="date"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 mb-7 "
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 mb-7 "
                 min={today}
                 onChange={(e) => {
                   setBookingDate(e.target.value);

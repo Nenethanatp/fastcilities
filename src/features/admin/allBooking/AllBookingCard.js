@@ -19,8 +19,8 @@ function AllBookingCard({ booking }) {
   return (
     <>
       <div className="  w-full">
-        <div class="flex justify-center flex-col items-center gap-4 ">
-          <div class="flex flex-row  rounded-lg bg-white shadow-lg w-7/12  items-center mb-3 justify-between h-[180px] ">
+        <div className="flex justify-center flex-col items-center gap-4 ">
+          <div className="flex flex-row  rounded-lg bg-white shadow-lg w-7/12  items-center mb-3 justify-between h-[180px] ">
             <div className="flex items-center gap-5 p-5 w-9/12">
               <img
                 class=" w-60 h-36 object-cover rounded-lg"
@@ -28,16 +28,18 @@ function AllBookingCard({ booking }) {
                 alt=""
               />
               <div className="flex ">
-                <div class="flex flex-col justify-start">
-                  <h5 class="text-gray-900 text-lg font-medium ">{facName}</h5>
-                  <h5 class="text-gray-900 text-lg font-medium mb-2">
+                <div className="flex flex-col justify-start">
+                  <h5 className="text-gray-900 text-lg font-medium ">
+                    {facName}
+                  </h5>
+                  <h5 className="text-gray-900 text-lg font-medium mb-2">
                     {facLocation}
                   </h5>
-                  <p class="text-gray-700 text-base ">
+                  <p className="text-gray-700 text-base ">
                     Booking Date: {bookingDate}
                   </p>
 
-                  <p class="text-gray-700 text-base ">
+                  <p className="text-gray-700 text-base ">
                     Booking Period: {joinedBookingTimeSlot}
                   </p>
                 </div>
@@ -50,9 +52,9 @@ function AllBookingCard({ booking }) {
               Show Available
             </button> */}
             <div className="p-5 w-3/12 bg-yellow- h-full bg-grayNav flex flex-col justify-center text-white text-base rounded-r-lg opacity-60">
-              <p class=" ">Booking id: {bookingId}</p>
-              <p class=" ">Booked by: {`${firstName} ${lastName}`}</p>
-              <p class=" ">User id: {studentId}</p>
+              <p>Booking id: {bookingId}</p>
+              <p>Booked by: {`${firstName} ${lastName}`}</p>
+              <p>User id: {studentId}</p>
             </div>
           </div>
         </div>

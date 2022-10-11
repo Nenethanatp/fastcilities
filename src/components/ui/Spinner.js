@@ -2,11 +2,11 @@ import React from 'react';
 
 function Spinner() {
   return (
-    <div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-800 opacity-75 flex flex-col items-center justify-center">
+    <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-800 opacity-75 flex flex-col items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          class="mr-2 w-8 h-8 text-gray-200 animate-spin  fill-blue-700"
+          className="mr-2 w-8 h-8 text-gray-200 animate-spin  fill-blue-700"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -20,12 +20,11 @@ function Spinner() {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
-      <h2 class="text-center text-white text-xl font-semibold">Loading...</h2>
-      {/* <p class="w-1/3 text-center text-white">
-        This may take a few seconds, please don't close this page.
-      </p> */}
+      <h2 className="text-center text-white text-xl font-semibold">
+        Loading...
+      </h2>
     </div>
   );
 }

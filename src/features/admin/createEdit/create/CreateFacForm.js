@@ -65,9 +65,9 @@ function CreateFacForm() {
       </div>
       <div className="flex flex-col items-center">
         <form className=" w-5/6 ">
-          <div class="mb-3 flex flex-col ">
+          <div className="mb-3 flex flex-col ">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="type"
             >
               Type
@@ -84,9 +84,9 @@ function CreateFacForm() {
               <option value="basketball"> Basketball Court</option>
             </select>
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="name"
             >
               Name
@@ -98,9 +98,9 @@ function CreateFacForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="location"
             >
               Location
@@ -112,9 +112,9 @@ function CreateFacForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="capacity"
             >
               Capacity
@@ -126,9 +126,9 @@ function CreateFacForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3 flex flex-col ">
+          <div className="mb-3 flex flex-col ">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="type"
             >
               Status
@@ -145,9 +145,9 @@ function CreateFacForm() {
             </select>
           </div>
 
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="durationLimit"
             >
               Duration Limit
@@ -158,9 +158,9 @@ function CreateFacForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <label
-              class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+              className="block text-gray-700 text-sm font-bold mb-1 ml-2"
               htmlFor="openingDay"
             >
               Opening Day
@@ -172,7 +172,7 @@ function CreateFacForm() {
               onChange={handleChangeInput}
             />
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="mb-3 flex justify-between gap-2">
               <div className=" w-full">
                 <label
@@ -191,7 +191,7 @@ function CreateFacForm() {
               </div>
               <div className=" w-full">
                 <label
-                  class="block text-gray-700 text-sm font-bold mb-1 ml-2"
+                  className="block text-gray-700 text-sm font-bold mb-1 ml-2"
                   htmlFor="closeTime"
                 >
                   Close Time
