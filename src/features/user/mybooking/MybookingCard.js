@@ -28,7 +28,7 @@ function MyBookingCard({
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-gray-200">
       <div className="flex justify-center flex-col items-center gap-4 w-full">
         <div
           className={`flex flex-row  rounded-lg bg-white shadow-lg w-7/12 justify-between items-center mb-3 p-5 ${cardStyle}`}

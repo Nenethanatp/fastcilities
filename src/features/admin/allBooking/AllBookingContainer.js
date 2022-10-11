@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import * as bookingApi from '../../../api/bookApi';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
 import AllBookingCard from './AllBookingCard';
 
 function AllBookingContainer() {
   const [allBookings, setAllBookings] = useState([]);
+  const { startLoading, stopLoading } = useLoadingContext();
 
   useEffect(() => {
     const fetchAllBooking = async () => {
@@ -19,11 +21,18 @@ function AllBookingContainer() {
   }, []);
 
   const getSetBooking = async () => {
-    const res = await bookingApi.getAllBooking();
-    setAllBookings(res.data.allBookingList);
+    try {
+      startLoading();
+      const res = await bookingApi.getAllBooking();
+      setAllBookings(res.data.allBookingList);
+    } catch (err) {
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
+    }
   };
 
-  console.log(allBookings);
+  // console.log(allBookings);
   return (
     <>
       <div className="flex flex-col items-center bg-gray-200">

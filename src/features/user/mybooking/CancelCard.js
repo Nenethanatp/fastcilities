@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { deleteMyBooking } from '../../../api/myBookingApi';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
 import { useModal } from '../../../contexts/ModalContext';
 import { useUserContext } from '../../../contexts/UserContext';
 
@@ -13,8 +14,11 @@ function CancelCard({
   const { name, location } = facility;
   const { closeFormModal } = useModal();
   const { myBookings, setMyBookings } = useUserContext();
+  const { startLoading, stopLoading } = useLoadingContext();
+
   const handleSubmit = async () => {
     try {
+      startLoading();
       await deleteMyBooking(bookingId);
       toast.success('Delete success');
       closeFormModal();
@@ -25,6 +29,8 @@ function CancelCard({
       );
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

@@ -2,20 +2,25 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { createBooking } from '../../../api/bookApi';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
 import { useUserContext } from '../../../contexts/UserContext';
 import ConfirmCard from './ConfirmCard';
 
 function ConfirmBookingContainer() {
   const { selectedFac, bookingDate, selectedTimeSlots } = useUserContext();
   const navigate = useNavigate();
+  const { startLoading, stopLoading } = useLoadingContext();
 
   const handleClick = async () => {
     try {
+      startLoading();
       await createBooking(selectedFac.id, bookingDate, selectedTimeSlots);
       toast.success('Booking Success');
       navigate('/my_booking');
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

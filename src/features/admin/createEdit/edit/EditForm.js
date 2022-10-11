@@ -5,6 +5,7 @@ import EditImageForm from './EditImageForm';
 import * as facApi from '../../../../api/facApi';
 import { validateNewFac } from '../../../../validations/validateNewFac';
 import { useFacContext } from '../../../../contexts/FacContext';
+import { useLoadingContext } from '../../../../contexts/LoadingContext';
 function EditForm({ fac }) {
   const { closeFormModal } = useModal();
   const { setAllFacs } = useFacContext();
@@ -35,6 +36,8 @@ function EditForm({ fac }) {
     status,
   });
 
+  const { startLoading, stopLoading } = useLoadingContext();
+
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -56,6 +59,7 @@ function EditForm({ fac }) {
       Object.keys(input).forEach((key) => {
         formData.append(key, input[key]);
       });
+      startLoading();
       const res = await facApi.updateFac(id, formData);
       console.log(res.data.allFacs);
       setAllFacs(res.data.allFacs);
@@ -63,6 +67,8 @@ function EditForm({ fac }) {
       closeFormModal();
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

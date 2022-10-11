@@ -28,7 +28,7 @@ function BookingContainer() {
 
   return (
     // <div className="w-full">
-    <div className="w-9/12">
+    <div className="w-9/12 bg-gray-200 h-screen">
       <BookingCard />
       <BookingSlot />
       <div className="flex justify-end">

@@ -3,14 +3,24 @@ import { getMyBooking } from '../../../api/myBookingApi';
 import { useUserContext } from '../../../contexts/UserContext';
 import MyBookingCard from './MyBookingCard';
 import dateFormat from 'dateformat';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
+import { toast } from 'react-toastify';
 
 function MyBookingContainer() {
+  const { startLoading, stopLoading } = useLoadingContext();
   const { myBookings, setMyBookings } = useUserContext();
   useEffect(() => {
     const firstGetMyBooking = async () => {
-      const res = await getMyBooking();
-      const myBookingLists = res.data.myBookingList;
-      setMyBookings(myBookingLists);
+      try {
+        startLoading();
+        const res = await getMyBooking();
+        const myBookingLists = res.data.myBookingList;
+        setMyBookings(myBookingLists);
+      } catch (err) {
+        toast.error(err.response?.data.message);
+      } finally {
+        stopLoading();
+      }
     };
     firstGetMyBooking();
   }, []);

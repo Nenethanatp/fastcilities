@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getAvailableTime } from '../../../api/searchApi';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
 import { useUserContext } from '../../../contexts/UserContext';
 
 function ResultCard({ availableFac }) {
@@ -20,10 +21,12 @@ function ResultCard({ availableFac }) {
   const navigate = useNavigate();
 
   const { setSelectedFac } = useUserContext();
+  const { startLoading, stopLoading } = useLoadingContext();
 
   const { bookingDate, setUsedTimeSlots } = useUserContext();
   const handleClick = async () => {
     try {
+      startLoading();
       const res = await getAvailableTime(id, bookingDate);
       setUsedTimeSlots(res.data.usedTimeSlots);
       setSelectedFac(availableFac);
@@ -31,6 +34,8 @@ function ResultCard({ availableFac }) {
       navigate('/booking');
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 
@@ -41,7 +46,7 @@ function ResultCard({ availableFac }) {
           <div className="flex flex-row  rounded-lg bg-white shadow-lg w-7/12  items-center mb-3 p-5 justify-between h-[180px] ">
             <div className="flex items-center gap-5">
               <img
-                className=" w-60 h-36 object-cover rounded-xl"
+                className=" w-60 h-36 object-cover rounded-lg"
                 src={image}
                 alt=""
               />

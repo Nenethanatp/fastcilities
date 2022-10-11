@@ -25,7 +25,7 @@ function AdminHeader() {
               setPage('allBooking');
             }}
           >
-            All booking
+            All Booking
           </Link>
           <Link
             to="/create_edit"

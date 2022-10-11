@@ -5,6 +5,7 @@ import { validateNewFac } from '../../../../validations/validateNewFac';
 import * as facApi from '../../../../api/facApi';
 import { useModal } from '../../../../contexts/ModalContext';
 import FacImageForm from './FacImageForm';
+import { useLoadingContext } from '../../../../contexts/LoadingContext';
 
 function CreateFacForm() {
   const { closeFormModal } = useModal();
@@ -22,8 +23,7 @@ function CreateFacForm() {
     image: '',
     status: '',
   });
-  //   console.log(input);
-
+  const { startLoading, stopLoading } = useLoadingContext();
   const handleChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -45,7 +45,7 @@ function CreateFacForm() {
       Object.keys(input).forEach((key) => {
         formData.append(key, input[key]);
       });
-
+      startLoading();
       const res = await facApi.createNewFac(formData);
       console.log(res.data.newFacility);
 
@@ -54,6 +54,8 @@ function CreateFacForm() {
       closeFormModal();
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

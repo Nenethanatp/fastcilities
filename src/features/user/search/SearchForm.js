@@ -7,9 +7,11 @@ import SearchFormCard from './SearchFormCard';
 import dateFormat from 'dateformat';
 import badminton from '../../../assets/icon/badminton.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useLoadingContext } from '../../../contexts/LoadingContext';
 
 function SearchForm() {
   const { bookingDate, setBookingDate, setAvailableFacs } = useUserContext();
+  const { startLoading, stopLoading } = useLoadingContext();
   const facilityTypes = [
     {
       facName: 'Meeting Room',
@@ -41,6 +43,7 @@ function SearchForm() {
       if (!type || !bookingDate) {
         return toast.error('Please select type and booking date');
       }
+      startLoading();
       const res = await getAvailableFac(type, bookingDate);
       if (res.data.facility) {
         setAvailableFacs(res.data.facility);
@@ -48,6 +51,8 @@ function SearchForm() {
       }
     } catch (err) {
       toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

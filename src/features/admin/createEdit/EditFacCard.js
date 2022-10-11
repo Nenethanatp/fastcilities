@@ -1,7 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { getAvailableTime } from '../../../api/searchApi';
 import { useModal } from '../../../contexts/ModalContext';
 import EditForm from './edit/EditForm';
 
@@ -31,7 +28,7 @@ function EditFacCard({ fac }) {
           <div className="flex flex-row  rounded-lg bg-white shadow-lg w-7/12  items-center mb-3 p-5 justify-between h-[180px] ">
             <div className="flex items-center gap-5">
               <img
-                className=" w-60 h-36 object-cover rounded-xl"
+                className=" w-60 h-36 object-cover rounded-lg"
                 src={image}
                 alt=""
               />
