@@ -13,8 +13,10 @@ module.exports = {
         oldGreenSky: '#228573',
         greenSky: '#2B8C7B',
         grayNav: '#414141',
+        fast: '#D65337',
       },
     },
   },
+
   plugins: [require('flowbite/plugin')],
 };
