@@ -12,7 +12,7 @@ function MyBookingCard({
   const { name, location, image } = facility;
   // console.log(facility);
   // console.log(type);
-  const { openModal, openFormModal, closeFormModal } = useModal();
+  const { openFormModal } = useModal();
   const bookingDateNewFormat = dateFormat(bookingDate, 'ddd, dd mmm yy');
 
   const bookingPeriodString = bookingPeriod.join(', ');
