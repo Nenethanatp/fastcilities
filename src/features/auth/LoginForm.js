@@ -38,7 +38,7 @@ function LoginForm() {
           className="w-2/5 p-5 rounded-xl text-center bg-white"
           onSubmit={handleSubmitForm}
         >
-          <div>Login</div>
+          <div className=" text-2xl text-grayNav">Login</div>
           <br />
           <div className="mb-6">
             <input

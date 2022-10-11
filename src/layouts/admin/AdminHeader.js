@@ -9,7 +9,14 @@ function AdminHeader() {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-grayNav p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <div>logo FASTCILITIES</div>
+        <div>
+          <span className="font-[Audiowide] font-bold text-lg text-fast ">
+            FAST
+          </span>
+          <span className="font-[Audiowide] font-bold text-lg text-peach ">
+            CILITIES
+          </span>
+        </div>
       </div>
 
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto gap-10">

@@ -18,7 +18,7 @@ function SearchFormCard(props) {
           selectType(facType);
         }}
       >
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center gap-4">
           {logo ? (
             <i className={`${logo} text-6xl opacity-40`} />
           ) : (

@@ -49,8 +49,9 @@ function RegisterForm() {
           className="w-2/5 p-5 rounded-xl text-center bg-white"
           onSubmit={handleSubmitForm}
         >
-          <div>Register</div>
+          <div className=" text-2xl text-grayNav">Register</div>
           <br />
+
           <div className="mb-6">
             <input
               name="studentId"

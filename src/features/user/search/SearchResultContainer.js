@@ -8,6 +8,7 @@ function SearchResultContainer() {
     <>
       <div className="flex flex-col items-center">
         <div className=" mt-12 w-7/12 mb-5 text-2xl">Available</div>
+
         {availableFacs?.map((availableFac) => {
           return (
             <ResultCard key={availableFac.id} availableFac={availableFac} />

@@ -9,7 +9,7 @@ function RegisterContainer() {
           <span className="font-[Audiowide] font-bold text-5xl text-fast ">
             FAST
           </span>
-          <span className="font-[Audiowide]  text-5xl text-peach w3">
+          <span className="font-[Audiowide]  text-5xl text-peach ">
             CILITIES
           </span>
         </div>
